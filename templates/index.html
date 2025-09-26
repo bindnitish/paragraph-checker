@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paragraph Difference Checker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Paragraph Difference Checker</h1>
+            <p>Compare two paragraphs and see their differences highlighted</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="paragraph1">Paragraph 1:</label>
+                    <textarea id="paragraph1" placeholder="Enter the first paragraph here..."></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label for="paragraph2">Paragraph 2:</label>
+                    <textarea id="paragraph2" placeholder="Enter the second paragraph here..."></textarea>
+                </div>
+
+                <div class="button-group">
+                    <button id="compareBtn" class="btn-primary">Compare Paragraphs</button>
+                    <button id="clearBtn" class="btn-secondary">Clear All</button>
+                    <button id="swapBtn" class="btn-secondary">Swap Paragraphs</button>
+                </div>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Comparing paragraphs...</p>
+            </div>
+
+            <div id="results" class="results hidden">
+                <div class="legend">
+                    <h3>Legend:</h3>
+                    <span class="legend-item">
+                        <span class="deleted-example">Deleted text</span> - Text in paragraph 1 but not in paragraph 2
+                    </span>
+                    <span class="legend-item">
+                        <span class="inserted-example">Inserted text</span> - Text in paragraph 2 but not in paragraph 1
+                    </span>
+                    <span class="legend-item">
+                        <span class="changed-example">Changed text</span> - Text that differs between paragraphs
+                    </span>
+                </div>
+
+                <div class="comparison-container">
+                    <div class="comparison-panel">
+                        <h3>Paragraph 1 (Original)</h3>
+                        <div id="highlighted1" class="highlighted-text"></div>
+                    </div>
+
+                    <div class="comparison-panel">
+                        <h3>Paragraph 2 (Comparison)</h3>
+                        <div id="highlighted2" class="highlighted-text"></div>
+                    </div>
+                </div>
+
+                <div class="statistics">
+                    <h3>Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <label>Paragraph 1:</label>
+                            <span id="stats1"></span>
+                        </div>
+                        <div class="stat-item">
+                            <label>Paragraph 2:</label>
+                            <span id="stats2"></span>
+                        </div>
+                        <div class="stat-item">
+                            <label>Similarity:</label>
+                            <span id="similarity"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="error" class="error hidden">
+                <p id="errorMessage"></p>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with Flask and Python • Hosted locally</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
